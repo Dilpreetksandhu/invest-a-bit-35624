@@ -284,10 +284,10 @@ const Index = () => {
   const projectedValue = projectionData?.values[projectionData.values.length - 1] || 0;
 
   return (
-    <div className="min-h-screen p-4 md:p-6 lg:p-8">
-      <div className="max-w-[1600px] mx-auto">
+    <div className="min-h-screen p-4 md:p-6 xl:p-8">
+      <div className="max-w-7xl mx-auto w-full">
       {/* Hero Header */}
-      <header className="mb-6 animate-fade-in">
+      <header className="mb-6 lg:mb-8 animate-fade-in">
         <div className="glass-card rounded-2xl p-4 md:p-6 relative overflow-hidden hover:scale-[1.01] transition-transform duration-300">
           <div className="absolute right-[-40px] top-[-30px] w-60 h-60 rounded-full bg-gradient-to-br from-primary/20 to-secondary/15 blur-3xl animate-hero-in" />
           
@@ -297,7 +297,7 @@ const Index = () => {
                 <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h1 className="text-xl md:text-2xl font-bold mb-1">Micro-Invest</h1>
+                <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Micro-Invest</h1>
                 <p className="text-muted-foreground text-xs md:text-sm line-clamp-2">Collect spare change from everyday transactions and watch it compound</p>
               </div>
             </div>
@@ -323,9 +323,9 @@ const Index = () => {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-        {/* Left: Add Transaction */}
-        <div className="lg:col-span-4 space-y-4 md:space-y-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 md:gap-6 xl:gap-8">
+        {/* Left Column: Transactions & Investments */}
+        <div className="space-y-5 md:space-y-6">
           <Card className="glass-card border-border/50 animate-slide-up">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -455,8 +455,7 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* Main: Balance & Projection */}
-        <div className="lg:col-span-4 space-y-4 md:space-y-6">
+          {/* Spare Change Balance */}
           <Card className="glass-card border-border/50 animate-slide-up" style={{ animationDelay: "50ms" }}>
             <CardHeader>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -479,8 +478,8 @@ const Index = () => {
             </CardHeader>
           </Card>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6">
-            <Card className="glass-card border-border/50 md:col-span-2 animate-slide-up" style={{ animationDelay: "100ms" }}>
+          {/* Investment Settings */}
+          <Card className="glass-card border-border/50 animate-slide-up" style={{ animationDelay: "100ms" }}>
               <CardHeader>
                 <CardTitle className="text-lg">Investment Settings</CardTitle>
               </CardHeader>
@@ -541,47 +540,47 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-border/50 md:col-span-3 animate-slide-up" style={{ animationDelay: "150ms" }}>
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-secondary" />
-                  Projection
-                </CardTitle>
-                <CardDescription>Yearly projection of invested balance</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {projectionData ? (
-                  <div>
-                    <ProjectionChart 
-                      projectionData={projectionData} 
-                      goalAmount={currentPlan.goalAmount}
-                    />
-                    <p className="text-sm text-muted-foreground mt-4">
-                      <strong>Projected after {currentPlan.years} years: ₹ {projectedValue.toFixed(2)}</strong> (Assumed {currentPlan.annualReturn}% p.a.)
-                    </p>
-                    {projectionData.conservative && projectionData.aggressive && (
-                      <div className="text-xs text-muted-foreground mt-2 space-y-1">
-                        <p>Risk-adjusted range ({riskTolerance}):</p>
-                        <p>Conservative: ₹{projectionData.conservative[projectionData.conservative.length - 1].toFixed(2)}</p>
-                        <p>Aggressive: ₹{projectionData.aggressive[projectionData.aggressive.length - 1].toFixed(2)}</p>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="h-64 flex items-center justify-center text-muted-foreground">
-                    <div className="text-center">
-                      <Info className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                      <p className="text-sm">Configure settings and click Simulate to see projection</p>
+          {/* Projection Chart */}
+          <Card className="glass-card border-border/50 animate-slide-up" style={{ animationDelay: "150ms" }}>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-secondary" />
+                Projection
+              </CardTitle>
+              <CardDescription>Yearly projection of invested balance</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {projectionData ? (
+                <div>
+                  <ProjectionChart 
+                    projectionData={projectionData} 
+                    goalAmount={currentPlan.goalAmount}
+                  />
+                  <p className="text-sm text-muted-foreground mt-4">
+                    <strong>Projected after {currentPlan.years} years: ₹ {projectedValue.toFixed(2)}</strong> (Assumed {currentPlan.annualReturn}% p.a.)
+                  </p>
+                  {projectionData.conservative && projectionData.aggressive && (
+                    <div className="text-xs text-muted-foreground mt-2 space-y-1">
+                      <p>Risk-adjusted range ({riskTolerance}):</p>
+                      <p>Conservative: ₹{projectionData.conservative[projectionData.conservative.length - 1].toFixed(2)}</p>
+                      <p>Aggressive: ₹{projectionData.aggressive[projectionData.aggressive.length - 1].toFixed(2)}</p>
                     </div>
+                  )}
+                </div>
+              ) : (
+                <div className="h-64 flex items-center justify-center text-muted-foreground">
+                  <div className="text-center">
+                    <Info className="w-12 h-12 mx-auto mb-3 opacity-50" />
+                    <p className="text-sm">Configure settings and click Simulate to see projection</p>
                   </div>
-                )}
-              </CardContent>
-            </Card>
-          </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Right: Summary & Advanced Features */}
-        <div className="lg:col-span-4 space-y-4 md:space-y-6">
+        {/* Right Column: Plans & Portfolio */}
+        <div className="space-y-5 md:space-y-6">
           <PlanSelector
             plans={plans}
             currentPlanId={currentPlanId}
@@ -668,7 +667,6 @@ const Index = () => {
             Made for demo & assignment. No real investing or persistence.
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
