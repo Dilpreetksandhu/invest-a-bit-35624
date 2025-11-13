@@ -13,6 +13,7 @@ import { CategoryAnalysis } from "@/components/CategoryAnalysis";
 import { RiskSimulator } from "@/components/RiskSimulator";
 import { ProjectionChart } from "@/components/ProjectionChart";
 import { PortfolioAllocation } from "@/components/PortfolioAllocation";
+import logo from "@/assets/logo.png";
 
 const Index = () => {
   // Plan management
@@ -293,8 +294,8 @@ const Index = () => {
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 relative z-10">
             <div className="flex items-center gap-3 md:gap-4 flex-1">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl hero-gradient flex items-center justify-center shadow-lg flex-shrink-0">
-                <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-white" />
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+                <img src={logo} alt="Micro-Invest Logo" className="w-full h-full rounded-xl" />
               </div>
               <div className="flex-1 min-w-0">
                 <h1 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1">Micro-Invest</h1>
