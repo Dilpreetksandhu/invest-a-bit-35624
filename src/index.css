@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 25% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 20% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 265 70% 66%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 174 62% 47%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 265 70% 66%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 265 70% 66%;
+
+    --radius: 0.875rem;
+
+    --glass: 0 0% 100% / 0.04;
+    --success: 142 71% 45%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(265 70% 66%), hsl(174 62% 47%));
+    --gradient-radial: radial-gradient(1200px 600px at 10% 10%, hsl(265 70% 66% / 0.08), transparent);
+    --shadow-elevated: 0 12px 40px hsl(220 25% 2% / 0.6);
+    --shadow-glow: 0 0 40px hsl(265 70% 66% / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: radial-gradient(1200px 600px at 10% 10%, hsl(265 70% 66% / 0.08), transparent), 
+                linear-gradient(180deg, hsl(220 25% 6%) 0%, hsl(220 30% 4%) 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.36s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out forwards;
+  }
+
+  .glass-card {
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.02), hsl(0 0% 100% / 0.01));
+    border: 1px solid hsl(0 0% 100% / 0.03);
+    box-shadow: 0 10px 30px hsl(220 25% 2% / 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(265 70% 66%), hsl(174 62% 47%));
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted) / 0.3);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.5);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.7);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes confetti-pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
